@@ -20,11 +20,11 @@ const SignUp = () => {
     }
     return (
         <div className="hero bg-base-100 rounded-2xl py-5">
-            <div className="hero-content flex-col lg:flex-row">
+            <div className="hero-content flex-col lg:flex-row sm:w-11/12">
                 <div>
                 <h1 className="text-5xl font-bold text-center sm:text-start">Welcome to  <span className='text-[#2E7D32] font-bold'>UrbanGarden</span></h1>
-                <p className="py-5 w-10/12 text-[#2E7D3280] hidden sm:inline-flex">
-                    Looking For a job? Without wasting time register and start looking for job matching your skill & ability. 
+                <p className="py-5 w-9/12 text-[#2E7D3280] hidden sm:inline-flex">
+                    Are you someone who loves gardening? Sign up now to join our gardeners’ community and explore the wonderful world of gardening!
                 </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
