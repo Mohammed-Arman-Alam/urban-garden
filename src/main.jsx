@@ -7,12 +7,17 @@ import MainLayout from './layouts/MainLayout.jsx';
 import AuthProvider from './authProvider/AuthProvider.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
+import HomePage from './pages/HomePage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     children:[
+      {
+        index:true,
+        Component:HomePage
+      },
       {
         path: '/signUp',
         Component:SignUp,

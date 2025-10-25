@@ -1,14 +1,29 @@
 import React, {use} from 'react';
 import { Link, NavLink } from 'react-router';
-
+import { AuthContext } from '../authProvider/AuthProvider';
 
 const Navbar = () => {
+    const {user, signOutUser} = use(AuthContext);
+    const handleLogOut=()=>{
+        signOutUser()
+        .then(()=>{
+            alert('Logout Successful')
+        })
+        .catch((error)=>{
+            alert('Unable to logout')
+        })
+    }
     const link =<>
-                    <NavLink>Home</NavLink>
-                    <li><a>Item 1</a></li>
-                    <li><a>Parent</a></li>
-                    <li><a>Item 3</a></li>
-                
+                    <NavLink to='/' className={({isActive})=>(isActive && "text-[#43A047] text-xl font-bold underline")}>Home</NavLink>
+                    <NavLink to='/explore' className={({isActive})=>(isActive && "text-[#43A047] font-bold underline")}>ExploreGardeners</NavLink>
+                    <NavLink>BrowseTips</NavLink>
+                    {
+                        (user) && (
+                        <>
+                        <NavLink>ShareGardenTip</NavLink>
+                        <NavLink>MyTips</NavLink>
+                        </>)
+                    }
                 </>
    
     return (
@@ -25,18 +40,30 @@ const Navbar = () => {
                 </div>
                 <a className="text-3xl font-bold text-[#2E7D32]">UrbadGarden</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-center hidden lg:flex w-6/12 font-semibold">
+                <ul className="w-full menu menu-horizontal px-1 flex flex-nowrap justify-between text-[16px] ">
                 {link}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/signUp'>
-                <button className="btn bg-[#2e7d32] rounded-lg text-[#FAFAF5]">SignUp</button>
-                </Link>
-                <Link to='/login'>
-                    <button className="btn bg-[#2e7d32] mr-2 rounded-lg text-[#FAFAF5]">LogIn</button>
-                </Link>
+                {
+                    (user) ?
+                    <>
+                    <Link to='/Profile'><img src={user.photoURL} alt="profile" className='h-9 w-9 rounded-full border border-[#2e7d32]'/></Link>
+                    <button onClick={handleLogOut} className="btn bg-[#2e7d32] ml-2 rounded-lg text-[#FAFAF5]">LogOut</button>
+                    </>
+                        
+                    :
+                    <>
+                    <Link to='/signUp'>
+                        <button className="btn bg-[#2e7d32] rounded-lg text-[#FAFAF5]">SignUp</button>
+                    </Link>
+                    <Link to='/login'>
+                        <button className="btn bg-[#2e7d32] mr-2 rounded-lg text-[#FAFAF5]">LogIn</button>
+                    </Link>
+                    </>
+                }
+                
             </div>
         </div>
     );
