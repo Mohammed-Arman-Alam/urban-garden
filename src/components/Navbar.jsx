@@ -14,7 +14,7 @@ const Navbar = () => {
         })
     }
     const link =<>
-                    <NavLink to='/' className={({isActive})=>(isActive && "text-[#43A047] text-xl font-bold underline")}>Home</NavLink>
+                    <NavLink to='/' className={({isActive})=>(isActive && "text-[#43A047] font-bold underline")}>Home</NavLink>
                     <NavLink to='/explore' className={({isActive})=>(isActive && "text-[#43A047] font-bold underline")}>ExploreGardeners</NavLink>
                     <NavLink>BrowseTips</NavLink>
                     {
@@ -27,7 +27,8 @@ const Navbar = () => {
                 </>
    
     return (
-        <div className="navbar w-11/12 mx-auto">
+    
+        <div className="navbar sm:w-11/12 mx-auto py-4">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,10 +39,10 @@ const Navbar = () => {
                 </ul>
                     
                 </div>
-                <a className="text-3xl font-bold text-[#2E7D32]">UrbadGarden</a>
+                <a className="text-3xl font-bold text-[#2E7D32] hidden sm:inline">UrbanGarden</a>
             </div>
-            <div className="navbar-center hidden lg:flex w-6/12 font-semibold">
-                <ul className="w-full menu menu-horizontal px-1 flex flex-nowrap justify-between text-[16px] ">
+            <div className="navbar-center hidden lg:flex font-semibold">
+                <ul className="w-full menu menu-horizontal px-1 flex flex-nowrap gap-4  text-[16px] ">
                 {link}
                 </ul>
             </div>
@@ -59,13 +60,13 @@ const Navbar = () => {
                         <button className="btn bg-[#2e7d32] rounded-lg text-[#FAFAF5]">SignUp</button>
                     </Link>
                     <Link to='/login'>
-                        <button className="btn bg-[#2e7d32] mr-2 rounded-lg text-[#FAFAF5]">LogIn</button>
+                        <button className="btn bg-[#2e7d32] mr-2 rounded-lg text-[#FAFAF5]">Login</button>
                     </Link>
                     </>
                 }
                 
             </div>
-        </div>
+        </div> 
     );
 };
 

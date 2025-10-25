@@ -19,7 +19,7 @@ const SignUp = () => {
         })
     }
     return (
-        <div className="hero bg-base-100 my-8 rounded-2xl py-5">
+        <div className="hero bg-base-100 rounded-2xl py-5">
             <div className="hero-content flex-col lg:flex-row">
                 <div>
                 <h1 className="text-5xl font-bold text-center sm:text-start">Welcome to  <span className='text-[#2E7D32] font-bold'>UrbanGarden</span></h1>
