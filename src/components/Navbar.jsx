@@ -50,7 +50,9 @@ const Navbar = () => {
                 {
                     (user) ?
                     <>
-                    <Link to='/Profile'><img src={user.photoURL} alt="profile" className='h-9 w-9 rounded-full border border-[#2e7d32]'/></Link>
+                    
+                    
+                    <img src={user.photoURL} alt="profile" className='h-9 w-9 rounded-full border border-[#2e7d32]'/>
                     <button onClick={handleLogOut} className="btn bg-[#2e7d32] ml-2 rounded-lg text-[#FAFAF5]">LogOut</button>
                     </>
                         
