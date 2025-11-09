@@ -1,16 +1,25 @@
 import React, {use} from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const {user, signOutUser} = use(AuthContext);
     const handleLogOut=()=>{
         signOutUser()
         .then(()=>{
-            alert('Logout Successful')
+            Swal.fire({
+                        title: "Logout Successful!",
+                        icon: "success",
+                        draggable: true
+                        });
         })
         .catch((error)=>{
-            alert('Unable to logout')
+            Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Unable to logout!",
+                    });
         })
     }
     const link =<>
@@ -20,7 +29,7 @@ const Navbar = () => {
                     {
                         (user) && (
                         <>
-                        <NavLink>ShareGardenTip</NavLink>
+                        <NavLink to='shareGardeningTips'>ShareGardenTip</NavLink>
                         <NavLink>MyTips</NavLink>
                         </>)
                     }

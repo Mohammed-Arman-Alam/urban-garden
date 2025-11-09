@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const {createUser, signInWithGoogle}= use(AuthContext);
@@ -10,13 +11,30 @@ const SignUp = () => {
         const form = e.target;
         const formData = new FormData(form);
         const {email, password}= Object.fromEntries(formData.entries());
-        createUser(email, password)
-        .then(result=>{
-            console.log(result)
+        const validPass =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+        if(validPass.test(password)){
+            createUser(email, password)
+            .then(result=>{
+                Swal.fire({
+                    title: "Registration Successful!",
+                    icon: "success",
+                    draggable: true
+                    });
+                setErroMessage("");
         })
         .catch(error=>{
             setErroMessage(error.message);
+            Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong",
+                        });
         })
+        }
+        else{
+            setErroMessage("password should be at least 8 characters and include 1 uppercase, 1 lowercase, and a special character.")
+        }
+        
     }
     const handlesignInWithGoogle =()=>{
         signInWithGoogle()

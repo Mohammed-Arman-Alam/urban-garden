@@ -8,6 +8,7 @@ import AuthProvider from './authProvider/AuthProvider.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
 import HomePage from './pages/HomePage.jsx';
+import ShareGardeningTips from './pages/ShareGardeningTips.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         index:true,
         Component:HomePage
+      },
+      {
+        path: '/shareGardeningTips',
+        Component:ShareGardeningTips,
       },
       {
         path: '/signUp',

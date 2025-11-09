@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const {signInUser, signInWithGoogle}= use(AuthContext);
@@ -12,10 +13,20 @@ const Login = () => {
             const password = form.password.value;
             signInUser(email, password)
             .then(user=>{
-                console.log(user);
+                Swal.fire({
+                        title: "Login Successful!",
+                        icon: "success",
+                        draggable: true
+                        });
+                        setErroMessage("");
             })
             .catch(error=>{
                 setErroMessage(error.message);
+                Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong",
+                            });
             });
         }
         const handlesignInWithGoogle =()=>{
