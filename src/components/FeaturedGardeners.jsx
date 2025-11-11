@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const FeaturedGardeners = () => {
     const [activeGardeners, setActiveGardeners] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:3000/activeFeaturedGardeners")
+        fetch("https://urban-garden-server.vercel.app/activeFeaturedGardeners")
         .then(res=>res.json())
         .then(data=>setActiveGardeners(data));
     },[])

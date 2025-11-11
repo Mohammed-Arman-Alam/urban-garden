@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const TopTrendingTips = () => {
     const [tips, setTips] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:3000/topTips")
+        fetch("https://urban-garden-server.vercel.app/topTips")
         .then(res=>res.json())
         .then(data =>setTips(data))
     },[])
