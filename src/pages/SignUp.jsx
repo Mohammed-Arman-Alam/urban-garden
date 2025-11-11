@@ -4,17 +4,20 @@ import { AuthContext } from '../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    const {createUser, signInWithGoogle}= use(AuthContext);
+    const {createUser, signInWithGoogle, updateUser}= use(AuthContext);
     const [errorMessage, setErroMessage]= useState(null);    
     const handleSignUp =(e)=>{
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const {email, password}= Object.fromEntries(formData.entries());
+        const {email, password, name, url}= Object.fromEntries(formData.entries());
         const validPass =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
         if(validPass.test(password)){
             createUser(email, password)
             .then(result=>{
+                updateUser({displayName: name, photoURL : url})
+                .then()
+                .catch()
                 Swal.fire({
                     title: "Registration Successful!",
                     icon: "success",

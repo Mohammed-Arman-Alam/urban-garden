@@ -7,7 +7,6 @@ const TopTrendingTips = () => {
         .then(res=>res.json())
         .then(data =>setTips(data))
     },[])
-    console.log(tips);
     return (
         <div className="py-12 bg-[#2E7D3220]">
             <h2 className="text-center font-bold text-3xl mb-8 text-[#2E7D32]">Top Trending Tips</h2>
