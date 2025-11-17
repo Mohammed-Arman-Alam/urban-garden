@@ -41,8 +41,8 @@ const SignUp = () => {
     }
     const handlesignInWithGoogle =()=>{
         signInWithGoogle()
-        .then(result=>console.log(result))
-        .catch(error=>console.log(error))
+        .then()
+        .catch()
     }
     return (
         <div className="hero bg-base-100 rounded-2xl py-5">

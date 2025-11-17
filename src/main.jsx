@@ -11,6 +11,10 @@ import HomePage from './pages/HomePage.jsx';
 import ShareGardeningTips from './pages/ShareGardeningTips.jsx';
 import BrowseTips from './pages/BrowseTips.jsx';
 import TipDetails from './pages/TipDetails.jsx';
+import MyTips from './pages/MyTips.jsx';
+import UpdateTips from './pages/UpdateTips.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
+import ExploreGardener from './pages/ExploreGardener.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +36,26 @@ const router = createBrowserRouter([
       {
         path: 'browseTips/details/:id',
         loader: ({params})=>fetch(`https://urban-garden-server.vercel.app/sharedTips/${params.id}`),
+        hydrateFallbackElement:<h1>Loading....</h1>,
         Component: TipDetails,
+      },
+      {
+        path: '/myTips/:name',
+        loader: ({params})=> fetch(`https://urban-garden-server.vercel.app/sharedTips/user/${params.name}`),
+        hydrateFallbackElement: <h1 className='text-center text-3xl font-bold'>Loading.....</h1>,
+        Component: MyTips,
+      },
+      {
+        path: '/updateTips/:id',
+        loader: ({params})=>fetch(`https://urban-garden-server.vercel.app/sharedTips/${params.id}`),
+        hydrateFallbackElement: <h1 className='text-center text-3xl font-bold'>Loading.....</h1>,
+        Component: UpdateTips,
+      },
+      {
+        path: '/exploreGardeners',
+        Component: ExploreGardener,
+        loader: ()=> fetch('https://urban-garden-server.vercel.app/featuredGardeners'),
+        hydrateFallbackElement: <h1 className='text-center text-3xl font-bold'>Loading.....</h1>,
       },
       {
         path: '/signUp',
@@ -41,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:'/login',
         Component: Login,
+      },
+      {
+        path: '/*',
+        Component: ErrorPage,
       }
     ]
   },

@@ -5,7 +5,6 @@ const TipDetails = () => {
     const {id} = useParams();
     const {title,plantType,difficulty,description,imageUrl,category} = useLoaderData();
     const [LoadDescription, setloadDescription] = useState(false);
-    console.log(LoadDescription);
     return (
         <div className="card bg-base-100 image-full sm:w-10/12 mx-auto sm:h-fit">
             <figure>
