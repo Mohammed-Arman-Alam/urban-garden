@@ -9,7 +9,7 @@ const ShareGardeningTips = () => {
         const form = e.target;
         const formDate = new FormData(form);
         const sharedTips = Object.fromEntries(formDate.entries());
-        fetch('http://localhost:3000/sharedTips',{
+        fetch('https://urban-garden-server.vercel.app/sharedTips',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -29,7 +29,7 @@ const ShareGardeningTips = () => {
        
     };
     return (
-        <div className='sm:w-11/12 mx-auto bg-white'>
+        <div className='sm:w-11/12 mx-auto bg-white rounded-md'>
         <div className="bg-[#66BB6A15] p-6  rounded-md">
             <h2 className="text-3xl font-bold text-[#2E7D32] mb-8 text-center border-b border-dashed p-2 border-[#2E7D32]">Share a Gardening Tip</h2>
             <form onSubmit={handleShareTips} className="flex flex-col gap-4">

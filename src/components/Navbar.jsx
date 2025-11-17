@@ -25,7 +25,7 @@ const Navbar = () => {
     const link =<>
                     <NavLink to='/' className={({isActive})=>(isActive && "text-[#43A047] font-bold underline")}>Home</NavLink>
                     <NavLink to='/explore' className={({isActive})=>(isActive && "text-[#43A047] font-bold underline")}>ExploreGardeners</NavLink>
-                    <NavLink>BrowseTips</NavLink>
+                    <NavLink to='/browseTips'>BrowseTips</NavLink>
                     {
                         (user) && (
                         <>

@@ -9,6 +9,8 @@ import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ShareGardeningTips from './pages/ShareGardeningTips.jsx';
+import BrowseTips from './pages/BrowseTips.jsx';
+import TipDetails from './pages/TipDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,15 @@ const router = createBrowserRouter([
       {
         path: '/shareGardeningTips',
         Component:ShareGardeningTips,
+      },
+      {
+        path: '/browseTips',
+        Component: BrowseTips
+      },
+      {
+        path: 'browseTips/details/:id',
+        loader: ({params})=>fetch(`https://urban-garden-server.vercel.app/sharedTips/${params.id}`),
+        Component: TipDetails,
       },
       {
         path: '/signUp',
