@@ -53,7 +53,7 @@ const MyTips = () => {
                 </thead>
                 <tbody>
                     {
-                        tips.length > 0 ?
+                        Array.isArray(tips) ?
                         (
                             tips.map(tip=>
                                 <tr key={tip._id} className='text-center bg-[#FAF8E8] border border-gray-300'>

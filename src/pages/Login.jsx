@@ -1,11 +1,13 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    const {signInUser, signInWithGoogle}= use(AuthContext);
-        const [errorMessage, setErroMessage]= useState(null);    
+        const {user, signInUser, signInWithGoogle}= use(AuthContext);
+        const [errorMessage, setErroMessage]= useState(null);
+        const {state} = useLocation();
+        const navigate = useNavigate();    
         const handleLogin =(e)=>{
             e.preventDefault();
             const form = e.target;
@@ -19,6 +21,7 @@ const Login = () => {
                         draggable: true
                         });
                         setErroMessage("");
+                        navigate(`${state? state:'/'}`)
             })
             .catch(error=>{
                 setErroMessage(error.message);
@@ -31,7 +34,7 @@ const Login = () => {
         }
         const handlesignInWithGoogle =()=>{
         signInWithGoogle()
-        .then()
+        .then(navigate(`${state? state:'/'}`))
         .catch()
     }
         return (
